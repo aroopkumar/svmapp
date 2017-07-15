@@ -1,0 +1,37 @@
+CREATE SCHEMA `svm` ;
+
+create table svm.user
+as select * from chandrawat.user_model;
+
+ALTER TABLE `svm`.`user` 
+ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `svm`.`user` 
+ADD COLUMN `user_role` VARCHAR(1) NULL AFTER `password`;
+ALTER TABLE `svm`.`user` 
+CHANGE COLUMN `user_id` `user_id` VARCHAR(45) NOT NULL ;
+
+create table svm.user_data
+as SELECT up.user_id,first_name,last_name,dob,mobile,email,gender,location,last_login,last_updated,is_Active,ip_address
+ FROM chandrawat.user_profile up, chandrawat.user_data ud
+where up.user_id=ud.user_id;
+
+ALTER TABLE `svm`.`user_data` 
+CHANGE COLUMN `mobile` `mobile` VARCHAR(15) NULL ,
+CHANGE COLUMN `email` `email` VARCHAR(100) NULL ,
+CHANGE COLUMN `location` `address` VARCHAR(100) NULL DEFAULT NULL ,
+CHANGE COLUMN `ip_address` `ip_address` VARCHAR(100) NULL ,
+ADD PRIMARY KEY (`user_id`);
+
+ALTER TABLE `svm`.`user_data` 
+CHANGE COLUMN `is_Active` `is_active` TINYINT(1) NULL DEFAULT NULL ;
+ALTER TABLE `svm`.`user_data` 
+CHANGE COLUMN `user_id` `user_id` VARCHAR(45) NOT NULL ;
+
+create table svm.password_history
+(user_id VARCHAR(45),
+password VARCHAR(45),
+last_updated DATETIME);
+
+create table svm.book_category
+(category_id VARCHAR(15),
+category_name VARCHAR(100));
