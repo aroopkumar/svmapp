@@ -14,7 +14,7 @@ router.get('/addbookcategory', function (req, res, next) {
    res.render('addcategory');
 });
 
-router.post('/addcategory', function (req, res, next) {
+router.post('/addbookcategory', function (req, res, next) {
    var category_name = req.body.category;
    var category_id='1';
 
