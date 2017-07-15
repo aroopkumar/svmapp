@@ -31,14 +31,3 @@ router.get('/logout', function (req, res, next) {
   req.session = null;
   res.redirect('/');
 });
-
-// router.get('/library', function (req, res, next) {
-//    //res.redirect('/library');
-//    res.render('library');
-// });
-
-// router.get('/addbookcategory', function (req, res, next) {
-//    //res.redirect('/library');
-//    res.render('addcategory');
-// });
-
