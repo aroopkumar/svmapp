@@ -19,6 +19,11 @@ router.get('/addbookcategory', function (req, res, next) {
      res.redirect('/'+'?error');
 });
 
+router.get('/button', function (req, res, next) {
+   console.log('button clicked');
+   res.render('addbutton');
+});
+
 router.post('/addbookcategory', function (req, res, next) {
  if(req.session.username){
    var category_name = req.body.category;

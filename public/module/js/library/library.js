@@ -17,9 +17,13 @@ var globalUser;
 $(function() {
 	oRabs = new Rabs();
 	oRabs.doInit();
+	$('#btn1').click(function(){oRabs.showAlert(this.id)});
 });
 
 Rabs.prototype.doInit = function() {
 	alert('hello');
 }
 
+Rabs.prototype.showAlert=function(id){
+	alert('Called:: '+id)	
+}
