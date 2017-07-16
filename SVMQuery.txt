@@ -1,57 +1,125 @@
-CREATE SCHEMA `svm` ;
+CREATE TABLE `svm`.`student` (
+  `student_id` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`student_id`));
 
-create table svm.user
-as select * from chandrawat.user_model;
+  
+  CREATE TABLE `svm`.`student_master` (
+  `enrollment_no` VARCHAR(45) NOT NULL,
+  `firstname` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  `dob` DATE NULL,
+  `mobile` VARCHAR(13) NULL,
+  `email` VARCHAR(45) NULL,
+  `gender` VARCHAR(1) NULL,
+  `lastlogin` DATETIME NULL,
+  `lastupdated` DATETIME NULL,
+  `isactive` TINYINT NULL,
+  `ipaddress` VARCHAR(45) NULL,
+  `standard_id` VARCHAR(45) NOT NULL);
 
-ALTER TABLE `svm`.`user` 
-ADD PRIMARY KEY (`user_id`);
-ALTER TABLE `svm`.`user` 
-ADD COLUMN `user_role` VARCHAR(1) NULL AFTER `password`;
-ALTER TABLE `svm`.`user` 
-CHANGE COLUMN `user_id` `user_id` VARCHAR(45) NOT NULL ;
+  
+  CREATE TABLE `svm`.`guardian_master` (
+  `enrollment_no` VARCHAR(45) NOT NULL,
+  `gname` VARCHAR(45) NULL,
+  `gmobile` VARCHAR(45) NULL,
+  `gemail` VARCHAR(45) NULL,
+  `goccupation` VARCHAR(45) NULL,
+  `grelation` VARCHAR(45) NULL,
+  PRIMARY KEY (`enrollment_no`));
+  
+  CREATE TABLE `svm`.`address_master` (
+  `address_id` VARCHAR(45) NOT NULL,
+  `enrollment_no` VARCHAR(45) NULL,
+  `aline1` VARCHAR(45) NULL,
+  `aline2` VARCHAR(45) NULL,
+  `aline3` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
+  `district` VARCHAR(45) NULL,
+  `postal` VARCHAR(45) NULL,
+  `country` VARCHAR(45) NULL,
+  PRIMARY KEY (`address_id`));
 
-create table svm.user_data
-as SELECT up.user_id,first_name,last_name,dob,mobile,email,gender,location,last_login,last_updated,is_Active,ip_address
- FROM chandrawat.user_profile up, chandrawat.user_data ud
-where up.user_id=ud.user_id;
 
-ALTER TABLE `svm`.`user_data` 
-CHANGE COLUMN `mobile` `mobile` VARCHAR(15) NULL ,
-CHANGE COLUMN `email` `email` VARCHAR(100) NULL ,
-CHANGE COLUMN `location` `address` VARCHAR(100) NULL DEFAULT NULL ,
-CHANGE COLUMN `ip_address` `ip_address` VARCHAR(100) NULL ,
-ADD PRIMARY KEY (`user_id`);
+  CREATE TABLE `svm`.`standard` (
+  `standard_id` VARCHAR(45) NOT NULL,
+  `syllabus_id` VARCHAR(45) NOT NULL,
+  `stddescription` VARCHAR(45) NULL,
+  PRIMARY KEY (`standard_id`));
+  
+  CREATE TABLE `svm`.`fee` (
+  `fee_id` VARCHAR(45) NOT NULL,
+  `feedescription` VARCHAR(45) NULL,
+  `standard_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`fee_id`));
+  
+  CREATE TABLE `svm`.`student_fee` (
+  `enrollment_no` VARCHAR(45) NOT NULL,
+  `feestatus` VARCHAR(45) NULL,
+  `fee_id` VARCHAR(45) NOT NULL,
+  `feedate` DATE NULL,
+  `feeduedate` DATE NULL,
+  `comment` VARCHAR(45) NULL,
+  PRIMARY KEY (`enrollment_no`));
+  
+  CREATE TABLE `svm`.`perfomance` (
+  `perfomance_id` VARCHAR(45) NOT NULL,
+  `ptype` VARCHAR(45) NULL,
+  
+  CREATE TABLE `svm`.`syllabus` (
+  `syllabus_id` VARCHAR(45) NOT NULL,
+  `sdescription` VARCHAR(45) NULL,
+  `spath` VARCHAR(45) NULL,
+  PRIMARY KEY (`syllabus_id`));
+  
+  CREATE TABLE `svm`.`subject` (
+  `subject_id` VARCHAR(45) NOT NULL,
+  `sdescription` VARCHAR(45) NULL,
+  `standard_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`subject_id`));
+  
+  CREATE TABLE `svm`.`datesheet` (
+  `standard_id` VARCHAR(45) NOT NULL,
+  `examdate` DATE NULL,
+  `subject_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`standard_id`));
 
-ALTER TABLE `svm`.`user_data` 
-CHANGE COLUMN `is_Active` `is_active` TINYINT(1) NULL DEFAULT NULL ;
-ALTER TABLE `svm`.`user_data` 
-CHANGE COLUMN `user_id` `user_id` VARCHAR(45) NOT NULL ;
 
-create table svm.password_history
-(user_id VARCHAR(45),
-password VARCHAR(45),
-last_updated DATETIME);
 
-create table svm.book_category
-(category_id VARCHAR(15),
-category_name VARCHAR(100));
+  `pdescription` VARCHAR(45) NULL,
+  PRIMARY KEY (`perfomance_id`));
+  
+  CREATE TABLE `svm`.`student_performance` (
+  `p_id` VARCHAR(45) NOT NULL,
+  `enrollment_no` VARCHAR(45) NOT NULL,
+  `pvalue` VARCHAR(45) NULL,
+  PRIMARY KEY (`p_id`));
+  
+  CREATE TABLE `svm`.`leave_calendar` (
+  `leave_id` VARCHAR(45) NOT NULL,
+  `ldate` DATE NULL,
+  `ldescription` VARCHAR(45) NULL,
+  `lstatus` TINYINT NULL,
+  PRIMARY KEY (`leave_id`));
+  
+  CREATE TABLE `svm`.`result_master` (
+  `enrollment_no` VARCHAR(45) NOT NULL,
+  `standard_id` VARCHAR(45) NOT NULL,
+  `subject_id` VARCHAR(45) NOT NULL,
+  `marks` VARCHAR(45) NULL,
+  PRIMARY KEY (`enrollment_no`));
+  
+  CREATE TABLE `svm`.`notification` (
+  `not_id` VARCHAR(45) NOT NULL,
+  `notdescription` VARCHAR(45) NULL,
+  `nottype` VARCHAR(45) NULL,
+  `notdate` DATE NULL,
+  PRIMARY KEY (`not_id`));
 
-CREATE TABLE user_data (
-  user_id varchar(45) NOT NULL,
-  first_name varchar(45) DEFAULT NULL,
-  last_name varchar(45) DEFAULT NULL,
-  dob datetime DEFAULT NULL,
-  mobile varchar(15) DEFAULT NULL,
-  email varchar(100) DEFAULT NULL,
-  gender varchar(1) DEFAULT NULL,
-  address varchar(100) DEFAULT NULL,
-  last_login datetime DEFAULT NULL,
-  last_updated datetime DEFAULT NULL,
-  is_active tinyint(1) DEFAULT NULL,
-  ip_address varchar(100) DEFAULT NULL,
-  PRIMARY KEY (user_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE svm.book_category 
-CHANGE COLUMN category_id category_id VARCHAR(15) NOT NULL ,
-ADD PRIMARY KEY (category_id);
+
+
+
+
+
