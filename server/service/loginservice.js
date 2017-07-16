@@ -7,7 +7,7 @@ var message;
 module.exports = {
     AuthenticateUser: function (username, password, callback) {
         conditions = 'username = ' + "'" + username + "'" + ' AND ' + 'password = ' + "'" + password + "'";
-        dbtemplate.GetQueryResult('user', '', conditions, null, null, null, function (err, data) {
+        dbtemplate.GetQueryResult('admin', '', conditions, null, null, null, function (err, data) {
             if (data.length > 0) {
                 callback(null, true);
             } else {

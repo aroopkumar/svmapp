@@ -1,3 +1,5 @@
+create schema svm
+
 CREATE TABLE `svm`.`student` (
   `student_id` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NULL,

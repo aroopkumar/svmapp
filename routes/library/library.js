@@ -33,6 +33,7 @@ router.post('/addbookcategory', function (req, res, next) {
 
    loginservice.InsertQueryResult(map,function (err, data) {
             if (data) {
+                res.redirect('/library/addbookcategory');
                 //callback(null, true);
                 //res.redirect('/admin/')
                 console.log('category added');
