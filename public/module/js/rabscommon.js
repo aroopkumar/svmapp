@@ -42,300 +42,12 @@ var Common = function () {
     this.validateform = function (formid) {
         $('#' + formid).validate({
             errorClass: 'e-error',
-            rules: {
+               rules:{
 
-                server_ip: {
-                    required: true,
-                    IP4Checker: true,
-                },
-                udp_port: {
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                },
-                tcp_port: {
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                }, machineserial: {
-                    required: true,
-                    noSpace: true
-                },
-                ipaddress: {
-                    required: true,
-                    IP4Checker: true,
-                },
-                conudpport: {
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                },
-                reportport: {
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                },
-                commandport: {
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                },
-                machineid: {
-                    required: true,
-                },
-                machinename: {
-                    required: true,
-                },
-                linename: {
-                    required: true,
-                },
-                fqdn: {
-                    required: true,
-                    emailFormat: true,
-                },
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true
-                },
-                curr_pass: {
-                    required: true,
-                },
-                new_pass: {
-                    required: true,
-                },
-                re_pass: {
-                    required: true,
-                    equalTo: "#new_pass"
-                },
-                command: {
-                    required: true
-                },
-                mstat_name: {
-                    required: true
-                },
-                mscfg_name: {
-                    required: true
-                },
-                mprcd_name: {
-                    required: true
-                },
-                mpoid_name: {
-                    required: true
-                },
-                pitrd_name: {
-                    required: true
-                },
-                mmiad_name: {
-                    required: true
-                },
-                mstat_path: {
-                    required: true
-                },
-                mscfg_path: {
-                    required: true
-                },
-                mprcd_path: {
-                    required: true
-                },
-                mpoid_path: {
-                    required: true
-                },
-                pitrd_path: {
-                    required: true
-                },
-                mmiad_path: {
-                    required: true
-                },
-                error_log_path: {
-                    required: true
-                },
-                debug_log_path: {
-                    required: "#is_debug:checked"
-                },
-                tcp_command_port:{
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535]
-                },
-                tcp_report_port:{
-                    required: true,
-                    digits: true,
-                    minlength: 4,
-                    maxlength: 5,
-                    range: [1000, 65535] 
-                },
-                sync_clock_ip:{
-                    required: true,
-                    IP4Checker: true,
-                }
+               },
+               message:{
 
-            },
-            messages: {
-
-                server_ip: {
-                    required: $.i18n.prop('error_serverip_required'),
-                    IP4Checker: $.i18n.prop('error_ipformat'),
-                },
-                udp_port: {
-                    required: $.i18n.prop('error_udpport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                tcp_port: {
-                    required: $.i18n.prop('error_tcpport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                ipaddress: {
-                    required: $.i18n.prop('error_ipaddress_required'),
-                    IP4Checker: $.i18n.prop('error_ipformat')
-                },
-                conudpport: {
-                    required: $.i18n.prop('error_udpport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                reportport: {
-                    required: $.i18n.prop('error_reportport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                commandport: {
-                    required: $.i18n.prop('error_commandport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                machineid: {
-                    required: $.i18n.prop('error_machineid_required')
-                },
-                machinename: {
-                    required: $.i18n.prop('error_machinename_required')
-                },
-                machineserial: {
-                    required: $.i18n.prop('error_machineserial_required'),
-                    noSpace: $.i18n.prop('error_machineserial_format')
-                },
-                linename: {
-                    required: $.i18n.prop('error_linename_required')
-                },
-                fqdn: {
-                    required: $.i18n.prop('error_fqdn_required'),
-                    emailFormat: $.i18n.prop('error_email_format')
-                },
-                username: {
-                    required: $.i18n.prop('error_username')
-                },
-                password: {
-                    required: $.i18n.prop('error_password')
-                },
-                new_pass: {
-                    required: $.i18n.prop('error_newpassword_required')
-                },
-                curr_pass: {
-                    required: $.i18n.prop('error_currpassword_required')
-                },
-                re_pass: {
-                    required: $.i18n.prop('error_repassword_required'),
-                    equalTo: $.i18n.prop('error_repassword_equalto')
-                },
-                command: {
-                    required: $.i18n.prop('error_setcommand_required')
-                },
-
-                mstat_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-                mscfg_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-                mprcd_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-                mpoid_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-                pitrd_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-                mmiad_name: {
-                    required: $.i18n.prop('error_filename_required')
-                },
-
-                mstat_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                mscfg_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                mprcd_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                mpoid_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                pitrd_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                mmiad_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                error_log_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                debug_log_path: {
-                    required: $.i18n.prop('error_path_required')
-                },
-                tcp_report_port: {
-                    required: $.i18n.prop('error_reportport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                tcp_command_port: {
-                    required: $.i18n.prop('error_commandport_required'),
-                    digits: $.i18n.prop('error_digits'),
-                    minlength: $.i18n.prop('error_min_length'),
-                    maxlength: $.i18n.prop('error_max_length'),
-                    range: $.i18n.prop('error_range')
-                },
-                sync_clock_ip:{
-                    required: $.i18n.prop('error_ipaddress_required'),
-                    IP4Checker: $.i18n.prop('error_ipformat'),
-                }
-
-            },
-			/* onsubmit: false,
-            submitHandler: function(form){
-               if ($(form).valid()){
-                     form.submit(); 
-                 }
-                 return false;
-            } */
+               },
             submitHandler: function () {
                 return false;
             }
@@ -452,18 +164,18 @@ function setClientLocale() {
 };
 
 /************* Init i18n ***********************/
-function init_i18n(lang) {
-    $.i18n.properties({
-        name: 'flexMessageResource',
-        path: 'locales/',
-        mode: 'both',
-        language: lang,
-        async: true,
-        callback: function () {
+// function init_i18n(lang) {
+//     $.i18n.properties({
+//         name: 'flexMessageResource',
+//         path: 'locales/',
+//         mode: 'both',
+//         language: lang,
+//         async: true,
+//         callback: function () {
 
-        }
-    });
-}
+//         }
+//     });
+// }
 
 /****** Set locale ******/
 var selectLang = function () {
@@ -501,13 +213,13 @@ var multilingual = function () {
     });
 }
 
-var language = function (language) {
-    $.i18n().locale = language;
-}
+// var language = function (language) {
+//     $.i18n().locale = language;
+// }
 
-/** ready function */
+// /** ready function */
 $(document).ready(function () {
     //initialize i18n based on session storage language key 
-    init_i18n(setClientLocale());
-    selectLang();
+    // init_i18n(setClientLocale());
+    // selectLang();
 });
