@@ -17,9 +17,9 @@ module.exports = {
         });
     }
     ,
-    InsertQueryResult: function(table_name, fields, callback){
-        dbtemplate.InsertQueryResult(table_name,fields,function (err, data){
-            if (data.length > 0) {
+    InsertQueryResult: function(fields, callback){
+        dbtemplate.InsertQueryResult('book_category',fields,function (err, data){
+            if (data.affectedRows> 0) {
                 callback(null, true);
                 //console.log('category added');
             } else {
