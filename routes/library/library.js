@@ -13,11 +13,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/addbookcategory', function (req, res, next) {
-   //res.redirect('/library');
-   res.render('addcategory');
+    if(req.session.username)
+    res.render('addcategory');
+    else
+     res.redirect('/'+'?error');
 });
 
 router.post('/addbookcategory', function (req, res, next) {
+ if(req.session.username){
    var category_name = req.body.category;
    var category_id='1';
    var map=new Hashmap();
@@ -39,5 +42,11 @@ router.post('/addbookcategory', function (req, res, next) {
                 console.log('category not added');
             }
         });
+        }
+else{
+    res.redirect('/'+'?invalid');
+}
 });
+
+
 module.exports = router;
