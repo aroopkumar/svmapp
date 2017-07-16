@@ -35,3 +35,23 @@ last_updated DATETIME);
 create table svm.book_category
 (category_id VARCHAR(15),
 category_name VARCHAR(100));
+
+CREATE TABLE user_data (
+  user_id varchar(45) NOT NULL,
+  first_name varchar(45) DEFAULT NULL,
+  last_name varchar(45) DEFAULT NULL,
+  dob datetime DEFAULT NULL,
+  mobile varchar(15) DEFAULT NULL,
+  email varchar(100) DEFAULT NULL,
+  gender varchar(1) DEFAULT NULL,
+  address varchar(100) DEFAULT NULL,
+  last_login datetime DEFAULT NULL,
+  last_updated datetime DEFAULT NULL,
+  is_active tinyint(1) DEFAULT NULL,
+  ip_address varchar(100) DEFAULT NULL,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE svm.book_category 
+CHANGE COLUMN category_id category_id VARCHAR(15) NOT NULL ,
+ADD PRIMARY KEY (category_id);
