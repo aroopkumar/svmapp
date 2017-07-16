@@ -105,7 +105,9 @@ CREATE TABLE `svm`.`student` (
   CREATE TABLE `svm`.`perfomance` (
   `perfomance_id` VARCHAR(45) NOT NULL,
   `ptype` VARCHAR(45) NULL,
-  
+  `pdescription` VARCHAR(45) NULL,
+  PRIMARY KEY (`perfomance_id`));
+
   CREATE TABLE `svm`.`syllabus` (
   `syllabus_id` VARCHAR(45) NOT NULL,
   `sdescription` VARCHAR(45) NULL,
@@ -123,11 +125,6 @@ CREATE TABLE `svm`.`student` (
   `examdate` DATE NULL,
   `subject_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`standard_id`));
-
-
-
-  `pdescription` VARCHAR(45) NULL,
-  PRIMARY KEY (`perfomance_id`));
   
   CREATE TABLE `svm`.`student_performance` (
   `p_id` VARCHAR(45) NOT NULL,
