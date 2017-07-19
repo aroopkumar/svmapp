@@ -15,5 +15,17 @@ module.exports = {
             }
             
         });
+    },
+    InsertQueryResult: function(fields, callback){
+        dbtemplate.InsertQueryResult('book_category',fields,function (err, data){
+            if (data.affectedRows> 0) {
+                callback(null, true);
+                //console.log('category added');
+            } else {
+                callback(err, false);
+                //console.log('category not added');
+            }
+        });          
     }
+
 }

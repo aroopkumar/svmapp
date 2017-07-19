@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 var session = require('./routes/session');
 var index = require('./routes/index');
 var admin = require('./routes/admin/admin');
-// var library = require('./routes/library/library');
+var library = require('./routes/library/library');
 // var sports = require('./routes/sports/sports');
-var student = require('./routes/student/student');
+// var student = require('./routes/student/student');
 // var teacher = require('./routes/teacher/teacher');
 
 var app = express();
@@ -27,11 +27,12 @@ app.use(cookieSession({
   overwrite: false
 }));
 
-//Set page caching
 app.use(function(req, res, next) {
   res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   next();
-});
+})
+
+
 // view engine setup
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
@@ -41,15 +42,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //Static content path setup
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join('D://profile' + 'img')));
 
 //Set path
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/session', session);
-//app.use('/library', library);
+app.use('/library', library);
 //app.use('/sports', sports);
-app.use('/student', student);
+//app.use('/student', student);
 //app.use('/teacher', teacher);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,73 @@
+extends common/layout
+
+block content
+  section#main
+    section#content
+      .container
+        form(action='/issuebooks')
+          button.btn.btn-primray(type='submit') ISSUE BOOKS
+        form(action='/returnbooks')
+          button.btn.btn-primray(type='submit') RETURN BOOKS
+        form(action='/addbooks')
+          button.btn.btn-primray(type='submit') ADD BOOKS
+        form(action='/deletebooks')
+          button.btn.btn-primray(type='submit') DELETE BOOKS
+        form(action='/library/addbookcategory')
+          button.btn.btn-primray(type='submit') ADD BOOK CATEGORY
+      .block-header
+        .card
+        .mini-charts
+          .row
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-lightgreen
+                .clearfix
+                  .chart.stats-bar-2
+                    i.md.md-assignment.chart-icon 
+                  .count
+                    small ISSUE BOOKS
+                    h2.custom-header-padding 3551 Books
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-cyan
+                .clearfix
+                  .chart.stats-bar
+                    i.md.md-assignment-return.chart-icon
+                  .count
+                    small RETURN BOOKS
+                    h2.custom-header-padding 150 Returned
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-bluegray
+                .clearfix
+                  .chart.stats-line
+                    i.md.md-my-library-books.chart-icon
+                  .count
+                    small ADD BOOKS
+                    h2.custom-header-padding 8,778 Books
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-cyan
+                .clearfix
+                  .chart.stats-bar
+                    i.md.md-delete.chart-icon
+                  .count
+                    small DELETE BOOKS
+                    h2.custom-header-padding 8,778 Books
+        .block-header
+        .card
+        .mini-charts
+          .row
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-lightgreen
+                .clearfix
+                  .chart.stats-bar-2
+                    i.md.md-dns.chart-icon
+                  .count
+                    small ADD BOOK CATEGORY
+                    h2.custom-header-padding 10 Categories
+            .col-sm-6.col-md-3
+              .mini-charts-item.bgm-orange 
+                .clearfix
+                  .chart.stats-line
+                    i.md.md-assessment.chart-icon
+                  .count
+                    small BOOKS AVAILABLE
+                    h2.custom-header-padding 8,778 Books
+            

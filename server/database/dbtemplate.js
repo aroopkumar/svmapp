@@ -100,7 +100,6 @@ module.exports = {
                 callback(null, results);
             }
         });
-
     },
     /** Delete Query */
     deleteQueryResult: function (tableName, condition, callback) {

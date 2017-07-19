@@ -1,0 +1,9 @@
+extends common/layout
+
+block content
+  section#main
+    section#content
+      .container-fluid
+        form(action='addbookcategory', method='post')
+            input.form-control(type='text', placeholder='Enter Category', name='category')
+            button.btn.btn-primary(type='submit') Add Category

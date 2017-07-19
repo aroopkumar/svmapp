@@ -9,7 +9,6 @@ router.get('/', function (req, res, next) {
 router.post('/login', function (req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
-  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   loginservice.AuthenticateUser(username, password, function (err, data) {
     if (data.length>0) {
 
@@ -17,10 +16,14 @@ router.post('/login', function (req, res, next) {
       req.sessionOptions.maxAge = hour; //Set cookie max age
       req.sessionOptions.expires=new Date(Date.now()+hour);//Set expiration date
       req.session.username = username;//Set username in session variable
+<<<<<<< HEAD
 
       var path=['','admin','student','teacher','library','transport'];
 
       res.redirect('/'+path[data[0].user_role]+'/');
+=======
+      res.redirect('/admin/')
+>>>>>>> a84f10291bc332e5b0ebfbecb25740219e2e863b
     } else {
       res.redirect('/' + '?error');
     }
