@@ -21,7 +21,7 @@ app.use(cookieSession({
   name: 'rabs',
   secret: randomstring.generate(),
   httpOnly: true, 
-  expires:{},
+  expires:{},//Set expiration date
   maxAge: {},//maxage of session cookie
   secure: false,
   overwrite: false

@@ -16,7 +16,6 @@ var connection = mysql.createConnection({
     database: systemsettings.DB_NAME
 });
 /** Establising Connection */
-
 connection.connect(function (err) {
     if (err) {
         console.error('CONNECT FAILED ', err.code);
@@ -60,14 +59,14 @@ module.exports = {
         values = [];
         /** Itrating Map to and set column names and corresponding values */
         fields.forEach(function (value, key) {
-            columns.push(key);
+            column.push(key);
             values.push(value)
         });
         /** Preaparing final queery */
-        query = 'INSERT INTO ' + tableName + '(' + columns + ')' + ' values(' + values + ')';
+        query = 'INSERT INTO ' + tableName + '(' + columns + ')' + 'values(' + values + ')';
         console.log(query);
         /** Execute the query */
-            connection.query(query, function (error, results, fields) {
+        connection.query(query, function (error, results, fields) {
             if (error) {
                 callback(error, false);
                 throw error;
@@ -92,8 +91,8 @@ module.exports = {
         /** Preparing final query*/
         query = 'update ' + tableName + ' set ' + columns + ' where ' + conditions;
         console.log(query);
-        /** Execute the Query */
-            connection.query(query, function (error, results, fields) {
+        /** Execute the query */
+        connection.query(query, function (error, results, fields) {
             if (error) {
                 callback(error, false);
                 throw error;
@@ -106,7 +105,8 @@ module.exports = {
     deleteQueryResult: function (tableName, condition, callback) {
         query = 'DELETE from ' + tableName + ' WHERE ' + condition;
         console.log(query);
-            connection.query(query, function (error, results, fields) {
+        /** Execute the query */
+        connection.query(query, function (error, results, fields) {
             if (error) {
                 callback(error, false);
                 throw error;
