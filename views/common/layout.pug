@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    include header
+    link(rel='stylesheet', href='/module/css/main.css')
+    block head
+    title= title
+    
+  body
+    include navbar
+    block content
+    include footer
+    block foot
