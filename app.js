@@ -21,7 +21,7 @@ app.use(cookieSession({
   name: 'rabs',
   secret: randomstring.generate(),
   httpOnly: true, 
-  expires:{},
+  expires:{},//Set expiration date
   maxAge: {},//maxage of session cookie
   secure: false,
   overwrite: false
@@ -54,7 +54,6 @@ app.use('/library', library);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
