@@ -1,0 +1,76 @@
+doctype html
+html.login-content
+  head
+    include common/header
+    title SMS | SVM Bettiah
+    //title= title
+    
+  body.login-content
+    
+    // Login
+    #l-login.lc-block.toggled
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-person
+        .fg-line
+          input.form-control(type='text', placeholder='Username')
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-accessibility
+        .fg-line
+          input.form-control(type='password', placeholder='Password')
+      .clearfix
+      .checkbox
+        label
+          input(type='checkbox', value='')
+          i.input-helper
+          |                     Keep me signed in
+      a.btn.btn-login.btn-danger.btn-float(href='#')
+        i.md.md-arrow-forward
+      ul.login-navigation
+        li.bgm-red(data-block='#l-register') Register
+        li.bgm-orange(data-block='#l-forget-password') Forgot Password?
+    // Register
+    #l-register.lc-block
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-person
+        .fg-line
+          input.form-control(type='text', placeholder='Username')
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-mail
+        .fg-line
+          input.form-control(type='text', placeholder='Email Address')
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-accessibility
+        .fg-line
+          input.form-control(type='password', placeholder='Password')
+      .clearfix
+      .checkbox
+        label
+          input(type='checkbox', value='')
+          i.input-helper
+          |                     Accept the license agreement
+      a.btn.btn-login.btn-danger.btn-float(href='#')
+        i.md.md-arrow-forward
+      ul.login-navigation
+        li.bgm-green(data-block='#l-login') Login
+        li.bgm-orange(data-block='#l-forget-password') Forgot Password?
+    // Forgot Password
+    #l-forget-password.lc-block
+      p.text-left
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.
+      .input-group.m-b-20
+        span.input-group-addon
+          i.md.md-email
+        .fg-line
+          input.form-control(type='text', placeholder='Email Address')
+      a.btn.btn-login.btn-danger.btn-float(href='#')
+        i.md.md-arrow-forward
+      ul.login-navigation
+        li.bgm-green(data-block='#l-login') Login
+        li.bgm-red(data-block='#l-register') Register
+
+    include common/footer

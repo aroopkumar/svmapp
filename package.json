@@ -12,7 +12,10 @@
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "express-session": "^1.15.3",
+<<<<<<< HEAD
+=======
     "hashmap": "^2.1.0",
+>>>>>>> a84f10291bc332e5b0ebfbecb25740219e2e863b
     "morgan": "~1.8.1",
     "mysql": "^2.13.0",
     "pug": "2.0.0-rc.1",
